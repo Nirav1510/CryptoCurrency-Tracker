@@ -1,7 +1,14 @@
-import "./App.css";
+import React from 'react'
+import CoinDetailPage from './Pages/CoinDetailPage'
+import CoinSummaryPage from './Pages/CoinSummaryPage'
 
-function App() {
-  return <div className="App">App</div>;
+const App = () => {
+  return (
+    <div>
+      App
+    </div>
+  )
 }
 
-export default App;
+export default App
+
