@@ -5,19 +5,22 @@ import { WatchListContext } from "../Context/WatchListContext";
 const CoinList = () => {
   const [coins, setCoins] = useState([]);
   const { watchList } = useContext(WatchListContext);
-  console.log(watchList);
+  const [isLoading, setIsLoading] = useState(false);
 
+  //console.log(watchList);
 
   useEffect(() => {
     const fetchData = async () => {
-      const {data} = await CoinGecko.get("/coins/markets/", {
+      setIsLoading(true);
+      const { data } = await CoinGecko.get("/coins/markets/", {
         params: {
           vs_currency: "usd",
           ids: watchList.join(","), // array method that join element seperated by ','
         },
       });
-      console.log(data);
+      //console.log(data);
       setCoins(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
