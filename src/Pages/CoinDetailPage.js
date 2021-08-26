@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
+import HistoryChart from "../components/HistoryChart";
+import CoinData from "../components/CoinData";
 
 const CoinDetailPage = () => {
-    return (
-        <div>
-            Detail
-        </div>
-    )
-}
+  const { id } = useParams();
 
-export default CoinDetailPage
+  return <div>Detail</div>;
+};
+
+export default CoinDetailPage;
