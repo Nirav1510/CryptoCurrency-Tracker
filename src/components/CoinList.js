@@ -15,7 +15,7 @@ const CoinList = () => {
       setIsLoading(true);
       const { data } = await CoinGecko.get("/coins/markets/", {
         params: {
-          vs_currency: "usd",
+          vs_currency: "inr",
           ids: watchList.join(","), // array method that join element seperated by ','
         },
       });
