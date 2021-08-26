@@ -10,30 +10,41 @@ const CoinDetailPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const responseDay = await CoinGecko.get(`/coins/${id}/market_chart/`, {
-        params: {
-          vs_currency: "inr",
-          days: "1",
-        },
-      });
-      const responseWeek = await CoinGecko.get(`/coins/${id}/market_chart/`, {
-        params: {
-          vs_currency: "inr",
-          days: "7",
-        },
-      });
-      const responseYear = await CoinGecko.get(`/coins/${id}/market_chart/`, {
-        params: {
-          vs_currency: "inr",
-          days: "365",
-        },
-      });
-
+      const [day, week, year, detail] = await Promise.all([
+        CoinGecko.get(`/coins/${id}/market_chart/`, {
+          params: {
+            vs_currency: "inr",
+            days: "1",
+          },
+        }),
+        CoinGecko.get(`/coins/${id}/market_chart/`, {
+          params: {
+            vs_currency: "inr",
+            days: "7",
+          },
+        }),
+        CoinGecko.get(`/coins/${id}/market_chart/`, {
+          params: {
+            vs_currency: "inr",
+            days: "365",
+          },
+        }),
+        CoinGecko.get("/coins/markets/", {
+            params: {
+              vs_currency: "inr",
+              ids: id, 
+            },
+          }),
+      ]);
+     
+      //Promise.all() fuction call all apis the apis together
+      //console.log(detail.data);
       //console.log(response.data);
       setCoinData({
-        day: responseDay.data.prices,
-        week: responseWeek.data.prices,
-        year: responseYear.data.prices,
+        day: day.data.prices,
+        week: week.data.prices,
+        year: year.data.prices,
+        detail: detail.data[0],
       });
     };
     fetchData();
