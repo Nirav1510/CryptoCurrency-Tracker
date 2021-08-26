@@ -23,6 +23,7 @@ const Coin = ({ coin }) => {
           )}
           {coin.price_change_percentage_24h}
         </span>
+        <i className="delete-icon far fa-times-circle text-danger"></i>
       </li>
     </Link>
   );
