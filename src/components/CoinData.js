@@ -1,9 +1,14 @@
 import React from 'react'
 
-const CoinData = () => {
+const CoinData = (props) => {
+
+    const renderData = () => {
+        
+    }
+
     return (
         <div>
-            Data
+            {renderData()}
         </div>
     )
 }

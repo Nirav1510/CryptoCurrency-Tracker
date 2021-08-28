@@ -50,7 +50,7 @@ const CoinDetailPage = () => {
         setIsLoading(false),
       ]);
 
-      //Promise.all() fuction call all apis the apis together
+      //Promise.all() fuction call all apis together
       //console.log(detail.data);
       //console.log(response.data);
       setCoinData({
@@ -70,7 +70,7 @@ const CoinDetailPage = () => {
     return (
       <div className="coinlist">
         <HistoryChart data={coinData} />
-        <CoinData />
+        <CoinData data={coinData.data} />
       </div>
     );
   };
