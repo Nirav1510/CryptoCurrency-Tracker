@@ -61,7 +61,7 @@ const CoinDetailPage = () => {
       });
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const renderData = () => {
     if (isLoading) {
