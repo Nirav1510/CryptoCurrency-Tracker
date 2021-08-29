@@ -10,6 +10,10 @@ export const WatchListContextProvider = (props) => {
     "litecoin",
   ]);
 
+  useEffect(() => {
+    localStorage.setItem("watchList", watchList);
+  }, [watchList]);
+
   const deleteCoin = (coin) => {
     setWatchList(
       watchList.filter((ele) => {
